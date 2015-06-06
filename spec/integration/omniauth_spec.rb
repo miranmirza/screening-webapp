@@ -9,6 +9,6 @@ describe "a user login", type: :feature do
     click_link_or_button("Login with Facebook")
 
     expect(User.last.uid).to eq('123545')
-    expect(current_path).to eq(home_path)
+    expect(current_path).to eq(candidates_path)
   end
 end
