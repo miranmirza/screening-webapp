@@ -10,4 +10,16 @@ class User < ActiveRecord::Base
 
     user
   end
+
+  def screener?
+    role == "screener" || role == "shadower"
+  end
+
+  def admin?
+    role == "admin"
+  end
+
+  def guest?
+    !self.screener? && !self.admin?
+  end
 end
