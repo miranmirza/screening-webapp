@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :notes
+  has_many :candidates, through: :notes
+
   def self.find_or_create_from_auth(auth)
     user = User.find_or_create_by(provider: auth.provider, uid: auth.uid)
     user.firstname = auth.info.first_name
