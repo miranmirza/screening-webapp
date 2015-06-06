@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     user = User.find_or_create_from_auth(auth)
     session[:user_id] = user.id if user
 
-    redirect_to candidates_path
+    redirect_to root_path
   end
 
   def destroy

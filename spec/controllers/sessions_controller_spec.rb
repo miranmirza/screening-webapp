@@ -21,14 +21,10 @@ RSpec.describe SessionsController do
       expect(session[:user_id]).not_to be_nil
     end
 
-    it "should redirect non-authorized user to the help page" do
-      post :create, provider: :facebook
-      expect(response).to redirect_to(thanks_path)
-    end
-
     it "should redirect authorized users to the candidates url" do
       post :create, provider: :facebook
-      expect(response).to redirect_to(candidates_path)
+
+      expect(response).to redirect_to(root_path)
     end
   end
 

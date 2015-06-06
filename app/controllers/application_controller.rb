@@ -9,11 +9,9 @@ class ApplicationController < ActionController::Base
 
   def authorize!
     if current_user.nil?
-      redirect_to root_path
+      redirect_to login_path
     elsif current_user.guest?
       redirect_to thanks_path
-    else
-      redirect_to candidates_path
     end
   end
 end
