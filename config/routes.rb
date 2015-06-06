@@ -4,4 +4,13 @@ Rails.application.routes.draw do
   get "/auth/facebook/callback", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   get "/thanks", to: "static_pages#thanks"
+
+  resources :users do
+    member do
+      put "revoke_access"
+      put "grant_access"
+    end
+  end
+
+
 end
