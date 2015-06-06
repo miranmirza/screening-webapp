@@ -54,27 +54,6 @@ ActiveRecord::Schema.define(version: 20150606164633) do
   add_index "interviewscreeners", ["interview_id"], name: "index_interviewscreeners_on_interview_id", using: :btree
   add_index "interviewscreeners", ["user_id"], name: "index_interviewscreeners_on_user_id", using: :btree
 
-  create_table "lists", force: :cascade do |t|
-    t.string   "title"
-    t.boolean  "archived",   default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string   "title"
-    t.boolean  "complete",          default: false
-    t.string   "description"
-    t.date     "due_date"
-    t.integer  "list_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -86,6 +65,4 @@ ActiveRecord::Schema.define(version: 20150606164633) do
 
   add_foreign_key "comments", "interviews"
   add_foreign_key "comments", "users"
-  add_foreign_key "interviewscreeners", "interviews"
-  add_foreign_key "interviewscreeners", "users"
 end
