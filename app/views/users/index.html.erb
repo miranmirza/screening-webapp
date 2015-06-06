@@ -1,0 +1,13 @@
+<% @users.each do |user| %>
+  <%= user.firstname %>
+  <%= user.lastname %>
+  skype: <%= user.skype %>
+
+  <% if user.screener? %>
+    <%= link_to "Revoke Access", revoke_access_user_path(user), class: "btn btn-danger", method: :put %>
+  <% else %>
+    <%= link_to "Grant Access", grant_access_user_path(user), class: "btn", method: :put unless user.admin? %>
+  <% end %>
+  </br>
+<% end %>
+

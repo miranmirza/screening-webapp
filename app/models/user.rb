@@ -22,7 +22,21 @@ class User < ActiveRecord::Base
     role == "admin"
   end
 
+  def shadow?
+    role == "shadow"
+  end
+
   def guest?
     !self.screener? && !self.admin?
+  end
+
+  def revoke!
+    self.role = "pending"
+    save!
+  end
+
+  def grant!
+    self.role = "screener"
+    save!
   end
 end
