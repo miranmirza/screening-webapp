@@ -1,1 +1,19 @@
-Sample Applicant page
+Pending screening
+<% @pending_candidates.each do |candidate| %>
+  <%= candidate.firstname %>
+  <%= candidate.lastname %>
+  from <%= candidate.city %>
+  skype: <%= candidate.skype %>
+  </br>
+  <%= progress(candidate.status) %>
+<% end %>
+</br>
+Completed screening
+<% @approved_candidates.each do |candidate| %>
+  <%= candidate.firstname %>
+  <%= candidate.lastname %>
+  from <%= candidate.city %>
+  skype: <%= candidate.skype %>
+  </br>
+  <%= progress(candidate.status) %>
+<% end %>
