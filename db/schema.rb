@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150606214832) do
+ActiveRecord::Schema.define(version: 20150607033341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 20150606214832) do
     t.string   "state"
     t.string   "skype"
     t.string   "hangout"
-    t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "status",     default: "pending"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 20150606214832) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "lists", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "archived",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "notes", force: :cascade do |t|
     t.string   "type"
     t.integer  "user_id"
@@ -61,6 +68,20 @@ ActiveRecord::Schema.define(version: 20150606214832) do
     t.text     "comment"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "complete",          default: false
+    t.string   "description"
+    t.date     "due_date"
+    t.integer  "list_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +99,8 @@ ActiveRecord::Schema.define(version: 20150606214832) do
     t.string   "email"
   end
 
+  add_foreign_key "attendances", "interviews"
+  add_foreign_key "attendances", "users"
   add_foreign_key "comments", "interviews"
   add_foreign_key "comments", "users"
 end
