@@ -5,6 +5,7 @@
 .box {
   width: 60%;
   height: 30px;
+  margin-bottom: 20px;
   padding-bottom: 60px;
   background-color: #53395C;
   color: #fff;
@@ -63,7 +64,7 @@
 #skype {
   opacity: 0.7;
 }
-#white_link {
+.white_link {
   color: #fff;
 }
 </style>
@@ -75,18 +76,19 @@
 <div> 
 <nav class="navbar navbar-default navbar-static-top exmna-nav">
   <div class="container">
-    <p class="navbar-text navbar-right"><div class="nav-text">Happy <%= Time.now.strftime('%A') %> <%= @current_user.firstname %>! <u><a id="white_link" href="#">Logout</a></p></u></div>
+    <p class="navbar-text navbar-right"><div class="nav-text">Happy <%= Time.now.strftime('%A') %> <%= @current_user.firstname %>! <u><a class="white_link" href="#">Logout</a></p></u></div>
   </div>
 </nav>
 </div>
 <p class="right slideUp"><i class="fa fa-user-plus"></i> <%= link_to "Add candidate", new_candidate_path if current_user.admin? %></p><BR><BR>
 </br>
-<h3 class="justify-class">Pending screening</h3>
+<h3 class="justify-class slideUp">Pending screening</h3>
 <% @pending_candidates.each do |candidate| %>
 
-  <div class="box center">
-    <div class="box-text"><%= link_to display_candidate(candidate.firstname, candidate.lastname, candidate.city), candidate_path(candidate) %> <span id="skype">skype</span> <a id="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a></div></div>
-  
+  <div class="box center slideUp">
+    <div class="box-text"><%= link_to display_candidate(candidate.firstname, candidate.lastname, candidate.city), candidate_path(candidate), class: "white_link" %> <span id="skype">skype</span> <a class="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a>
+  </br>
+  <%= progress(candidate.status) %></div></div>
 <% end %>
 </br>
 <h3 class="justify-class slideUp">Completed screening</h1>
