@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   end
 
   resources :candidates
+  resources :notes, except:[:destroy]
 end

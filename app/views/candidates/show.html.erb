@@ -5,5 +5,12 @@
 from <%= @candidate.city %>
 skype: <%= @candidate.skype %>
 </br>
+Status: <%= @candidate.status %>
 
-<%= progress(@candidate.status) %>
+<%= progress(@candidate.status) %></br>
+<%= link_to "Add note", new_note_path(candidate_id: @candidate.id) %></br>
+
+<% @notes.each do |note| %>
+  ----<%= note.created_at %> <%= note.note_type %> by <%= note.user.firstname %>
+  <%= note.comment %></br>
+<% end %>
