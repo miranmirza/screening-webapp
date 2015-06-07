@@ -56,7 +56,7 @@
 #skype {
   opacity: 0.7;
 }
-#white_link {
+.white_link {
   color: #fff;
 }
 html {
@@ -80,7 +80,7 @@ html {
 <p><a href="/"class="right slideUp">Back to All Applicants <i class="fa fa-angle-right"></i></a></p><BR><BR>
 <% @users.each do |user| %>
   <div class="box center slideUp">
-    <div class="box-text"><%= user.firstname %> <%= user.lastname %> <span id="skype">skype</span> <a id="white_link" href="skype:<%= user.skype %>"><%= user.skype %></a></div>
+    <div class="box-text"><%= user.firstname %> <%= user.lastname %> <span id="skype">skype</span> <a class="white_link" href="skype:<%= user.skype %>"><%= user.skype %></a></div>
   <div class="box-right">
   <% if user.screener? %>
     <%= link_to "Revoke Access", revoke_access_user_path(user), class: "btn btn-danger", method: :put %>
