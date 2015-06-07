@@ -1,4 +1,3 @@
-<%= link_to "Add candidate", new_candidate_path if current_user.admin? %></br>
 Pending screening
 <% @pending_candidates.each do |candidate| %>
   <%= candidate.firstname %>
