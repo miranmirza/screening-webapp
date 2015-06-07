@@ -1,0 +1,16 @@
+<div class="form">
+  <%= form_for(@candidate) do |f| %>
+    <%= f.label "First name" %>
+    <%= f.text_field :firstname %></br>
+    <%= f.label "Last name" %>
+    <%= f.text_field :lastname %></br>
+    <%= f.label "Skype ID" %>
+    <%= f.text_field :skype %></br>
+    <%= f.label "Hangouts" %>
+    <%= f.text_field :hangout%></br>
+    <%= f.label "City" %>
+    <%= f.text_field :city %></br>
+    <%= f.submit "Save", class: "btn btn-form" %>
+    <%= link_to "Cancelar", candidates_path, class: "btn btn-form" %></br>
+  <% end %>
+</div>
