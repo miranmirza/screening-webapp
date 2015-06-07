@@ -1,5 +1,99 @@
+<style>
+.exmna-nav {
+  background-color: #3D2347;
+}
+.box {
+  width: 60%;
+  height: 30px;
+  margin-bottom: 20px;
+  padding-bottom: 60px;
+  background-color: #53395C;
+  color: #fff;
+}
+.box-right {
+  margin-top: 10px;
+  margin-right: 10px;
+  float: right;
+}
 
-<div class="form">
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.navbar-center {
+  color: #fff;
+  display: inline-block;
+  vertical-align: top;
+  float: none;
+  text-align: center;
+}
+.box-text {
+  padding-top: 15px;
+  padding-left: 15px;
+  float: left;
+}
+.nav-text {
+  padding-top: 10px;
+  float: right;
+  color: #fff;
+}
+.navbar-center {
+  color: #fff;
+  text-align: center;
+  margin: 0px auto;
+}
+.right {
+  float: right;
+  margin-right: 10px;
+  opacity: 0.7;
+  color: #3D2347;
+  font-weight: 400;
+  font-size: 18px;
+}
+.left {
+  margin-left: 10px;
+  color: #3D2347;
+  font-weight: 400;
+  font-size: 18px;
+}
+.float-right {
+  position: relative;
+  float: right;
+}
+.justify-class {
+  margin-left: 20%;
+}
+#skype {
+  opacity: 0.7;
+}
+.white_link {
+  color: #fff;
+}
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+
+<head>
+  <link href="./app/asssets/stylesheets/animations.css">
+</head>
+
+<body> 
+<div> 
+<nav class="navbar navbar-default navbar-static-top exmna-nav">
+  <div class="container">
+    <p class="navbar-text navbar-right"><div class="nav-text">Happy <%= Time.now.strftime('%A') %> <%= @current_user.firstname %>! <u><%= link_to "Logout", logout_path, class: "white_link" %></p></u></div>
+  </div>
+</nav>
+</div>
+<p class="left slideUp"><i class="fa fa-angle-left"></i> <%= link_to "All candidates", candidates_path, class: "left" %></p><BR><BR>
+</br>
+
+
+<div class="form-group centered">
   <%= form_for(@candidate) do |f| %>
     <%= f.label "First name" %>
     <%= f.text_field :firstname %></br>
@@ -11,7 +105,7 @@
     <%= f.text_field :hangout%></br>
     <%= f.label "City" %>
     <%= f.text_field :city %></br>
-    <%= f.submit "Save", class: "btn btn-form" %>
-    <%= link_to "Cancel", candidates_path, class: "btn btn-form" %></br>
+    <%= f.submit "Save", class: "btn btn-success" %>
+    <%= link_to "Cancel", candidates_path, class: "btn btn-danger" %></br>
   <% end %>
 </div>
