@@ -18,6 +18,16 @@ class CandidatesController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @candidate = Candidate.find(params[:id])
+  end
+
+  def update
+    @candidate = Candidate.find(params[:id])
+    @candidate.update_attributes(candidate_params)
+    redirect_to candidate_path(@candidate)
+  end
+
   private
 
   def candidate_params
