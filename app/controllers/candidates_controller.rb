@@ -7,6 +7,7 @@ class CandidatesController < ApplicationController
 
   def show
     @candidate = Candidate.find(params[:id])
+    @notes = @candidate.notes
   end
 
   def new
