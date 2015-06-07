@@ -76,7 +76,7 @@
 <div> 
 <nav class="navbar navbar-default navbar-static-top exmna-nav">
   <div class="container">
-    <p class="navbar-text navbar-right"><div class="nav-text">Happy <%= Time.now.strftime('%A') %> <%= @current_user.firstname %>! <u><a class="white_link" href="#">Logout</a></p></u></div>
+    <p class="navbar-text navbar-right"><div class="nav-text">Happy <%= Time.now.strftime('%A') %> <%= @current_user.firstname %>! <u><%= link_to "Logout", logout_path, class: "white_link" %></p></u></div>
   </div>
 </nav>
 </div>
