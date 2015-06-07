@@ -7,4 +7,20 @@ class CandidatesController < ApplicationController
 
   def show
   end
+
+  def new
+    @candidate = Candidate.new
+  end
+
+  def create
+    Candidate.create(candidate_params)
+    redirect_to root_path
+  end
+
+  private
+
+  def candidate_params
+    params.require(:candidate).permit(:firstname, :lastname, :skype, :hangouts,
+                                      :city)
+  end
 end
