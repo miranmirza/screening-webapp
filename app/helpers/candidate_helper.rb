@@ -14,4 +14,8 @@ module CandidateHelper
       return "approved!"
     end
   end
+
+  def display_candidate(firstname, lastname, city)
+    "#{firstname} #{lastname} from  #{city}"
+  end
 end

@@ -1,0 +1,9 @@
+<%= link_to "All candidates", candidates_path %>
+<%= link_to "Edit", "#" %>
+<%= @candidate.firstname %>
+<%= @candidate.lastname %>
+from <%= @candidate.city %>
+skype: <%= @candidate.skype %>
+</br>
+
+<%= progress(@candidate.status) %>
