@@ -1,0 +1,85 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+<style>
+#currNotes {
+  background: #573E60;
+  color: #fff;
+  height: 100%;
+}
+#newNotes {
+  background: #E9E4E9;
+  color: #fff;
+  height: 100%;
+}
+#candidateData {
+  position:relative;
+  border-color: #3D2347;
+  background-color: #3D2347;
+  color: #3D2347;
+}
+#candidateData2 {
+  position:relative;
+  border-color: transparent;
+  background-color: transparent;
+  color: #573E60;
+}
+.right-button {
+  position: absolute;
+  right: 10px;
+}
+.col-lg-6 {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.border-button {
+  background-color: transparent;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 18px;
+}
+.borderless {
+  border-color: transparent;
+}
+#comments {
+  color: #573E60;
+  font-size: 24;
+  font-weight: 300;
+  opacity: 0.7;
+  border: none;
+  background: transparent;
+  width: 80%;
+  height: 80%;
+  resize: none;
+  }:focus {
+    outline: 0;
+}
+
+html {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+</style>
+</head>
+
+<body>
+  <div class="row">
+    <div id="currNotes" class="col-lg-6">
+        <nav id="candidateData" class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <button type="button" class="btn btn-default navbar-btn border-button borderless">
+              <span class="glyphicon glyphicon-menu-left"></span>All Applicants</button>
+            <button type="button" class="btn btn-default navbar-btn right-button border-button">Edit Info</button>
+          </div>
+        </nav>
+    </div>
+    
+    <div id="newNotes" class="col-lg-6">
+      <nav id="candidateData2" class="navbar navbar-default navbar-fixed-top">
+          <button type="button" class="btn btn-default navbar-btn border-button">All Applicants</button>
+          <button type="button" class="btn btn-default navbar-btn right-button border-button">Edit Info</button>
+      </nav>
+      <textarea id="comments" rows="4" cols="50" placeholder="Type to enter a new note..."></textarea></div>
+    
+  </div>
+</body>
