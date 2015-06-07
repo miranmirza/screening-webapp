@@ -1,5 +1,5 @@
 <%= link_to "All candidates", candidates_path %>
-<%= link_to "Edit", "#" %>
+<%= link_to "Edit", edit_candidate_path(@candidate) %>
 <%= @candidate.firstname %>
 <%= @candidate.lastname %>
 from <%= @candidate.city %>
