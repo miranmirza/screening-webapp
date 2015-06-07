@@ -59,8 +59,15 @@
 #white_link {
   color: #fff;
 }
+html {
+  font-family: 'Source Sans Pro', sans-serif;
+}
 </style>
+<head>
+  <link rel="stylesheet" href="./app/assets/stylesheets/animations.css">
+</head>
 
+<body>
 <div>
 <nav class="navbar navbar-default navbar-static-top exmna-nav">
   <div class="container">
@@ -69,9 +76,9 @@
 </nav>
 </div>
 
-<p><a href="/"class="right">Back to All Applicants <i class="fa fa-angle-right"></i></a></p><BR><BR>
+<p><a href="/"class="right slideUp">Back to All Applicants <i class="fa fa-angle-right"></i></a></p><BR><BR>
 <% @users.each do |user| %>
-  <div class="box center">
+  <div class="box center slideUp">
     <div class="box-text"><%= user.firstname %> <%= user.lastname %> <span id="skype">skype</span> <a id="white_link" href="skype:<%= user.skype %>"><%= user.skype %></a></div>
   <div class="box-right">
   <% if user.screener? %>
@@ -83,4 +90,5 @@
 </div>
   </br>
 <% end %>
+</body>
 
