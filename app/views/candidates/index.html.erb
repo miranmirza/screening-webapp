@@ -1,20 +1,101 @@
-<%= link_to "Add candidate", new_candidate_path if current_user.admin? %></br>
-Pending screening
+<style>
+.exmna-nav {
+  background-color: #3D2347;
+}
+.box {
+  width: 60%;
+  height: 30px;
+  padding-bottom: 60px;
+  background-color: #53395C;
+  color: #fff;
+}
+.box-right {
+  margin-top: 10px;
+  margin-right: 10px;
+  float: right;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+.navbar-center {
+  color: #fff;
+  display: inline-block;
+  vertical-align: top;
+  float: none;
+  text-align: center;
+}
+.box-text {
+  padding-top: 15px;
+  padding-left: 15px;
+  float: left;
+}
+.btn {
+  background-color: transparent;
+  color: #fff;
+}
+.nav-text {
+  padding-top: 10px;
+  float: right;
+  color: #fff;
+}
+.navbar-center {
+  color: #fff;
+  text-align: center;
+  margin: 0px auto;
+}
+.right {
+  float: right;
+  margin-right: 10px;
+  opacity: 0.7;
+  color: #3D2347;
+  font-weight: 400;
+  font-size: 18px;
+}
+.float-right {
+  position: relative;
+  float: right;
+}
+.justify-class {
+  margin-left: 20%;
+}
+#skype {
+  opacity: 0.7;
+}
+#white_link {
+  color: #fff;
+}
+</style>
+<head>
+  <link href="./app/asssets/stylesheets/animations.css">
+</head>
+
+<body> 
+<div> 
+<nav class="navbar navbar-default navbar-static-top exmna-nav">
+  <div class="container">
+    <p class="navbar-text navbar-right"><div class="nav-text">Happy <%= Time.now.strftime('%A') %> <%= @current_user.firstname %>! <u><a id="white_link" href="#">Logout</a></p></u></div>
+  </div>
+</nav>
+</div>
+<p class="right slideUp"><i class="fa fa-user-plus"></i> <%= link_to "Add candidate", new_candidate_path if current_user.admin? %></p><BR><BR>
+</br>
+<h3 class="justify-class">Pending screening</h3>
 <% @pending_candidates.each do |candidate| %>
-  <%= candidate.firstname %>
-  <%= candidate.lastname %>
-  from <%= candidate.city %>
-  skype: <%= candidate.skype %>
-  </br>
-  <%= progress(candidate.status) %>
+  <div class="box center">
+    <div class="box-text"><%= candidate.firstname %> <%= candidate.lastname %> from <%= candidate.city %> <span id="skype">skype</span> <a id="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a></div></div>
+  
 <% end %>
 </br>
-Completed screening
+<h3 class="justify-class slideUp">Completed screening</h1>
+
 <% @approved_candidates.each do |candidate| %>
-  <%= candidate.firstname %>
-  <%= candidate.lastname %>
-  from <%= candidate.city %>
-  skype: <%= candidate.skype %>
-  </br>
-  <%= progress(candidate.status) %>
+<div class="box center slideUp">
+    <div class="box-text"><%= candidate.firstname %> <%= candidate.lastname %> from <%= candidate.city %> <span id="skype">skype</span> <a id="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a>
+    </br>
+    <%= progress(candidate.status) %>
+    </div></div></div>
+
 <% end %>
+</body>
