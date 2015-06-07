@@ -173,10 +173,55 @@ body {
 
     <div id="newNotes" class="col-lg-6">
       <nav id="candidateData2" class="navbar navbar-default navbar-fixed-top">
-          <button type="button" class="btn btn-default navbar-btn border-button">Save this note</button>
+        <div class="dropdown">
+          <button type="button" class="btn btn-default navbar-btn border-button dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">Save this note</button>
+          <div class="newnote-additional-fields dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <p>What kind of note is this?</p>
+            <div class="radio">
+              <label>
+                <input type="radio" name="noteType" id="noteType1" value="screen1">
+                screen 1
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="noteType" id="noteType2" value="screen2">
+                screen 2
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="noteType" id="noteType3" value="screen3">
+                screen 3
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="noteType" id="noteType3" value="inperson">
+                in person
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="noteType" id="noteType3" value="email">
+                from an email
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="noteType" id="noteType3" value="message">
+                from a message
+              </label>
+            </div>
+            <button type="button" class="btn btn-default navbar-btn border-button">Save this note for real</button>
+          </div>
+        </div>
       </nav>
+
       <textarea id="comments" rows="4" cols="50" placeholder="Type to enter a new note..."></textarea>
     </div>
 
   </div>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
