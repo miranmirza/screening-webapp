@@ -1,16 +1,163 @@
-<%= link_to "All candidates", candidates_path %>
-<%= link_to "Edit", edit_candidate_path(@candidate) %>
-<%= @candidate.firstname %>
-<%= @candidate.lastname %>
-from <%= @candidate.city %>
-skype: <%= @candidate.skype %>
-</br>
-Status: <%= @candidate.status %>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
+<style>
+#currNotes {
+  background: #573E60;
+  color: #fff;
+  height: 100%;
+}
+#newNotes {
+  background: #E9E4E9;
+  color: #fff;
+  height: 100%;
+}
+#candidateData {
+  position:relative;
+  border-color: #3D2347;
+  background-color: #3D2347;
+  color: #3D2347;
+}
+#candidateData2 {
+  position:relative;
+  border-color: transparent;
+  background-color: transparent;
+  color: #573E60;
+}
+.right-button {
+  position: absolute;
+  right: 10px;
+}
+.col-lg-6 {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.border-button {
+  background-color: transparent;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 18px;
+}
+.borderless {
+  border-color: transparent;
+}
+#comments {
+  color: #573E60;
+  font-size: 24;
+  font-weight: 300;
+  opacity: 0.7;
+  border: none;
+  background: transparent;
+  width: 80%;
+  height: 80%;
+  resize: none;
+  }:focus {
+    outline: 0;
+}
 
-<%= progress(@candidate.status) %></br>
+.row {
+  margin-left: 0
+}
+
+#notesList {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+.note {
+  margin-bottom: 2em;
+}
+.note-meta {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  position: relative;
+}
+.note-meta:before {
+  position: absolute;
+  border-top: 1px rgba(255,255,255,0.6) solid;
+  width: 1.8em;
+  height: 0;
+  top: 0.8em;
+  left: -2em;
+}
+.note-body {
+  margin-top: 0.5em;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.note-body p {
+  margin: 0;
+}
+
+.note-type {
+  text-align: right;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+</style>
+</head>
+
+<body>
+  <div class="row">
+    <div id="currNotes" class="col-lg-6">
+        <nav id="candidateData" class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+            <button type="button" class="btn btn-default navbar-btn border-button borderless">
+              <span class="glyphicon glyphicon-menu-left"></span><%= link_to "All candidates", candidates_path %></button>
+            <button type="button" class="btn btn-default navbar-btn right-button border-button"><%= link_to "Edit", edit_candidate_path(@candidate), class:"white_link" %></button>
+          </div>
+        </nav>
+        <div id="notesList">
+            <%= @candidate.firstname %>
+            <%= @candidate.lastname %>
+            from <%= @candidate.city %>
+            skype: <%= @candidate.skype %>
+            </br>
+            Status: <%= @candidate.status %>
+          </BR></br>
+
+                <% @notes.each do |note| %>
+                <div class="note">
+                <div class="note-meta clearfix">
+                  <div class="note-date-taken pull-left">
+                    <span class="note-date-taken-month-day">
+                      <%= note.created_at %> 
+                    </span>
+                  </div>
+                </div>
+                <div class="note-type pull-right">
+                  <span class="note-noted-by note-noted-by-2">
+                  <%= note.note_type %> by <%= note.user.firstname %>
+                </span>
+                </div>
+                
+                <div class="note-body">
+                  <p><%= note.comment %></p>
+                </div>
+                
+                  
+                  </br>
+                <% end %>
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div id="newNotes" class="col-lg-6">
+      <nav id="candidateData2" class="navbar navbar-default navbar-fixed-top">
+          <button type="button" class="btn btn-default navbar-btn border-button">Save this note</button>
+      </nav>
+      <textarea id="comments" rows="4" cols="50" placeholder="Type to enter a new note..."></textarea>
+    </div>
+
+  </div>
+</body>
+
 <%= link_to "Add note", new_note_path(candidate_id: @candidate.id) %></br>
 
-<% @notes.each do |note| %>
-  ----<%= note.created_at %> <%= note.note_type %> by <%= note.user.firstname %>
-  <%= note.comment %></br>
-<% end %>
+
