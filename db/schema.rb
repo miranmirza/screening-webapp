@@ -54,13 +54,6 @@ ActiveRecord::Schema.define(version: 20150607175730) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "lists", force: :cascade do |t|
-    t.string   "title"
-    t.boolean  "archived",   default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-  end
-
   create_table "notes", force: :cascade do |t|
     t.string   "note_type"
     t.integer  "user_id"
@@ -68,20 +61,6 @@ ActiveRecord::Schema.define(version: 20150607175730) do
     t.text     "comment"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string   "title"
-    t.boolean  "complete",          default: false
-    t.string   "description"
-    t.date     "due_date"
-    t.integer  "list_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.string   "file_file_name"
-    t.string   "file_content_type"
-    t.integer  "file_file_size"
-    t.datetime "file_updated_at"
   end
 
   create_table "users", force: :cascade do |t|
