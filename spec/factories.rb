@@ -5,4 +5,11 @@ FactoryGirl.define do
     email "user@example.com"
     provider "Facebook"
   end
+
+  factory :candidate do
+    firstname "Candy"
+    lastname "Last"
+    skype "candidate"
+    city "Denver"
+  end
 end
