@@ -202,7 +202,7 @@ a {
       <nav id="candidateData2" class="navbar navbar-default navbar-fixed-top">
           <%= form_for Note.new, :url => notes_path(:candidate_id => @candidate.id) do |f| %>
               <div class="dropdown">
-                <%= f.submit "Save this note for real", class: "btn btn-default navbar-btn border-button" %>
+                <%= f.submit "Save Note", class: "btn btn-default navbar-btn border-button" %>
                 <div class = "radio">
                 <%= radio_button_tag(:note_type, "pending") %>
                 <%= label_tag(:type1, "Pending") %>
