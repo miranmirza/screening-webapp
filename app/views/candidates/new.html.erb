@@ -75,10 +75,29 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 </style>
 
 <head>
   <link href="./app/asssets/stylesheets/animations.css">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.1/select2.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.1/select2.min.css">
+
+  <!-- Placecomplete plugin -->
+  <script src="https://dl.dropboxusercontent.com/u/3859811/jquery.placecomplete.js"></script>
+  <link rel="stylesheet" href="https://dl.dropboxusercontent.com/u/3859811/jquery.placecomplete.css">
+
+  <script>
+  $(document).ready(function() {
+      $("#city").placecomplete({});
+      $("#city").on({
+          "placecomplete:selected": function(evt, placeResult) {
+              $("#city").val(placeResult.formatted_address);
+          }
+      });
+  });
+  </script>
 </head>
 
 <body> 
@@ -104,7 +123,7 @@
     <%= f.label "Google Hangout" %>
     <%= f.text_field :hangout%></br>
     <%= f.label "City" %>
-    <%= f.text_field :city %></br>
+    <%= f.text_field :city, id: "city"%></br></br>
     <%= f.submit "Save", class: "btn btn-success" %>
     <%= link_to "Cancel", candidates_path, class: "btn btn-danger" %></br>
   <% end %>
