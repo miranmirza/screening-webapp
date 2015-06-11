@@ -1,23 +1,10 @@
 <div class="form">
-  <%= form_for(@note) do |f| %>
-    <%= f.label "Add your comments" %>
-    <%= f.text_field :comment %></br>
+  <%= simple_form_for(@note) do |f| %>
+    <%= f.input :comment, label: "Add your thoughts" %></br>
     <%= f.hidden_field :user_id, :value => @current_user.id %>
-    <%= f.hidden_field :candidate_id, :value => params[:candidate_id] %>
-    <%= radio_button_tag(:note_type, "pending") %>
-    <%= label_tag(:type1, "Pending") %>
-    <%= radio_button_tag(:note_type, "screen1") %>
-    <%= label_tag(:type2, "Screen 1") %>
-    <%= radio_button_tag(:note_type, "screen2") %>
-    <%= label_tag(:type3, "Screen 2") %>
-    <%= radio_button_tag(:note_type, "screen3") %>
-    <%= label_tag(:type4, "Screen 3") %>
-    <%= radio_button_tag(:note_type, "in_person") %>
-    <%= label_tag(:type5, "In person") %>
-    <%= radio_button_tag(:note_type, "approved") %>
-    <%= label_tag(:type6, "Approved") %>
-    <%= radio_button_tag(:note_type, "denied") %>
-    <%= label_tag(:type7, "Denied") %></br>
+    <%= f.input :note_type, as: :radio_buttons, collection:
+          ["pending", "screen1", "screen2", "screen3", "in person",
+           "approved", "denied"] %></br>
     <%= f.submit "Save", class: "btn btn-form" %></br>
     <%= link_to "Cancel", candidates_path, class: "btn btn-form" %></br>
   <% end %>

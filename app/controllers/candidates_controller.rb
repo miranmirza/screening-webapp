@@ -8,6 +8,8 @@ class CandidatesController < ApplicationController
   def show
     @candidate = Candidate.find(params[:id])
     @notes = @candidate.notes
+    @note = Note.new
+    session['candidate_id'] = @candidate.id
   end
 
   def new
@@ -32,7 +34,7 @@ class CandidatesController < ApplicationController
   private
 
   def candidate_params
-    params.require(:candidate).permit(:firstname, :lastname, :skype, :hangouts,
+    params.require(:candidate).permit(:firstname, :lastname, :skype, :hangout,
                                       :city)
   end
 end
