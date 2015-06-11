@@ -216,10 +216,12 @@ a {
                 <%= label_tag(:type4, "Screen 3") %>
                 <%= radio_button_tag(:note_type, "in_person") %>
                 <%= label_tag(:type5, "In person") %>
+                <% if current_user.admin? %>
                 <%= radio_button_tag(:note_type, "approved") %>
                 <%= label_tag(:type6, "Approved") %>
                 <%= radio_button_tag(:note_type, "denied") %>
                 <%= label_tag(:type7, "Denied") %>
+                <% end %>
               </div>
             <%= hidden_field_tag :user_id, @current_user.id %>
             <%= text_area_tag(:comment, nil, size: "50x15", id: "comments", placeholder: "Type to enter a new note...") %>
