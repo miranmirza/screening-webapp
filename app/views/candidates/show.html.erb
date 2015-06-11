@@ -52,10 +52,11 @@
   width: auto;
   height: 80%;
   resize: none;
-  padding: 0 1.5em;
 }
 #comments:focus {
   outline: 0;
+  resize: none;
+  overflow: hidden;
 }
 
 #newNotes .btn {
@@ -139,9 +140,11 @@ a {
 #candidateInfo {
   padding-left: 20px;
   padding-bottom: 10px;
+  font-size: larger;
 }
 
 </style>
+  
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script>
@@ -159,9 +162,8 @@ a {
     <div id="currNotes" class="col-lg-6">
         <nav id="candidateData" class="navbar navbar-default navbar-fixed-top">
           <div class="container">
-            <button type="button" class="btn btn-default navbar-btn border-button borderless">
-              <span class="glyphicon glyphicon-menu-left"></span><%= link_to "All candidates", candidates_path %></button>
-            <button type="button" class="btn btn-default navbar-btn right-button border-button"><%= link_to "Edit", edit_candidate_path(@candidate), class:"white_link" %></button>
+              <%= link_to "<i class='fa fa-angle-left'></i> All Candidates".html_safe, candidates_path, class: "btn btn-default navbar-btn border-button borderless" %>
+              <%= link_to "Edit", edit_candidate_path(@candidate), class:"btn btn-default navbar-btn right-button border-button" %>
           </div>
         </nav>
         <div id="candidateInfo">
@@ -171,7 +173,7 @@ a {
         </br>
         skype: <a class="white_link" href="skype:<%= @candidate.skype %>"><%= @candidate.skype %></a>
         </br>
-        Status: <%= @candidate.status %>
+        Status: <%= @candidate.status.to_s.humanize %>
         </div>
         <div id="notesList">
           <% @notes.each do |note| %>
@@ -201,7 +203,7 @@ a {
     <div id="newNotes" class="col-lg-6">
       <nav id="candidateData2" class="navbar navbar-default navbar-fixed-top">
           <%= form_for Note.new, :url => notes_path(:candidate_id => @candidate.id) do |f| %>
-              <div class="dropdown">
+
                 <%= f.submit "Save Note", class: "btn btn-default navbar-btn border-button" %>
                 <div class = "radio">
                 <%= radio_button_tag(:note_type, "pending") %>
@@ -219,48 +221,10 @@ a {
                 <%= radio_button_tag(:note_type, "denied") %>
                 <%= label_tag(:type7, "Denied") %>
               </div>
-              
-                
-                <div class="newnote-additional-fields dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                  
-                  <p>What kind of note is this?</p>
-                  <div class="radio">
-                      <%= radio_button_tag(:note_type, "screen1") %>
-                      <%= label_tag(:type2, "Screen 1") %>
-                  </div>
-                  <div class="radio">
-                    <%= radio_button_tag(:note_type, "screen2") %>
-                    <%= label_tag(:type3, "Screen 2") %>
-                  </div>
-                  <div class="radio">
-                    <%= radio_button_tag(:note_type, "screen3") %>
-                    <%= label_tag(:type4, "Screen 3") %>
-                  </div>
-                  <div class="radio">
-                    <%= radio_button_tag(:note_type, "in_person") %>
-                    <%= label_tag(:type5, "In person") %>
-                  </div>
-                  <div class="radio">
-                    <%= radio_button_tag(:note_type, "approved") %>
-                    <%= label_tag(:type6, "Approved") %>
-                  </div>
-                  <div class="radio">
-                    <%= radio_button_tag(:note_type, "denied") %>
-                    <%= label_tag(:type7, "Denied") %></br>
-                  </div>
-                    <%= hidden_field_tag :user_id, @current_user.id %>
-
-                    <%= f.submit "Save this note for real", class: "btn btn-default navbar-btn border-button" %></br>
-                </div>
-              </div>
-            </nav>
-
-            <%= text_area_tag(:comment, nil, size: "50x4", id: "comments", placeholder: "Type to enter a new note...") %>
-          </div>
+            <%= hidden_field_tag :user_id, @current_user.id %>
+            <%= text_area_tag(:comment, nil, size: "50x15", id: "comments", placeholder: "Type to enter a new note...") %>
         </div>
       </nav>
-
-      <textarea id="comments" rows="4" cols="50" placeholder="Type to enter a new note..."></textarea>
     </div>
     <% end %>
   </div>
