@@ -188,54 +188,43 @@ a {
 
     <div id="newNotes" class="col-lg-6">
       <nav id="candidateData2" class="navbar navbar-default navbar-fixed-top">
+          <%= form_for @note :url => new_note_path(@note, :candidate_id => @candidate.id), :html => {:method => :post} do |f| %>
         <div class="dropdown">
           <button type="button" class="btn btn-default navbar-btn border-button dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">Save this note</button>
           <div class="newnote-additional-fields dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
             <p>What kind of note is this?</p>
             <div class="radio">
-              <label>
-                <input type="radio" name="noteType" id="noteType1" value="screen1">
-                screen 1
-              </label>
+                <%= radio_button_tag(:note_type, "screen1") %>
+                <%= label_tag(:type2, "Screen 1") %>
             </div>
             <div class="radio">
-              <label>
-                <input type="radio" name="noteType" id="noteType2" value="screen2">
-                screen 2
-              </label>
+              <%= radio_button_tag(:note_type, "screen2") %>
+              <%= label_tag(:type3, "Screen 2") %>
             </div>
             <div class="radio">
-              <label>
-                <input type="radio" name="noteType" id="noteType3" value="screen3">
-                screen 3
-              </label>
+              <%= radio_button_tag(:note_type, "screen3") %>
+              <%= label_tag(:type4, "Screen 3") %>
             </div>
             <div class="radio">
-              <label>
-                <input type="radio" name="noteType" id="noteType3" value="inperson">
-                in person
-              </label>
+              <%= radio_button_tag(:note_type, "in_person") %>
+              <%= label_tag(:type5, "In person") %>
             </div>
             <div class="radio">
-              <label>
-                <input type="radio" name="noteType" id="noteType3" value="email">
-                from an email
-              </label>
+              <%= radio_button_tag(:note_type, "approved") %>
+              <%= label_tag(:type6, "Approved") %>
             </div>
             <div class="radio">
-              <label>
-                <input type="radio" name="noteType" id="noteType3" value="message">
-                from a message
-              </label>
+              <%= radio_button_tag(:note_type, "denied") %>
+              <%= label_tag(:type7, "Denied") %></br>
             </div>
-            <button type="button" class="btn btn-default navbar-btn border-button">Save this note for real</button>
+              <%= f.submit "Save this note for real", class: "btn btn-default navbar-btn border-button" %></br>
           </div>
         </div>
       </nav>
 
       <textarea id="comments" rows="4" cols="50" placeholder="Type to enter a new note..."></textarea>
     </div>
-
+    <% end %>
   </div>
 </body>
 <%= link_to "Add note", new_note_path(candidate_id: @candidate.id) %></br>
