@@ -70,6 +70,13 @@
 .row {
   margin-left: 0
 }
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+  margin-left: 0;
+}
+
+#dropdownMenu1 {
+  padding-left: 20px;
+}
 
 #notesList {
   margin-left: 2em;
@@ -107,6 +114,11 @@
 .white_link {
   color: #fff;
 }
+
+.radio label {
+  padding-right: 20px;
+}
+
 
 .newnote-additional-fields {
   padding: 1.5em;
@@ -188,11 +200,29 @@ a {
 
     <div id="newNotes" class="col-lg-6">
       <nav id="candidateData2" class="navbar navbar-default navbar-fixed-top">
-
           <%= form_for Note.new, :url => notes_path(:candidate_id => @candidate.id) do |f| %>
               <div class="dropdown">
-                <button type="button" class="btn btn-default navbar-btn border-button dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1">Save this note</button>
+                <%= f.submit "Save this note for real", class: "btn btn-default navbar-btn border-button" %>
+                <div class = "radio">
+                <%= radio_button_tag(:note_type, "pending") %>
+                <%= label_tag(:type1, "Pending") %>
+                <%= radio_button_tag(:note_type, "screen1") %>
+                <%= label_tag(:type2, "Screen 1") %>
+                <%= radio_button_tag(:note_type, "screen2") %>
+                <%= label_tag(:type3, "Screen 2") %>
+                <%= radio_button_tag(:note_type, "screen3") %>
+                <%= label_tag(:type4, "Screen 3") %>
+                <%= radio_button_tag(:note_type, "in_person") %>
+                <%= label_tag(:type5, "In person") %>
+                <%= radio_button_tag(:note_type, "approved") %>
+                <%= label_tag(:type6, "Approved") %>
+                <%= radio_button_tag(:note_type, "denied") %>
+                <%= label_tag(:type7, "Denied") %>
+              </div>
+              
+                
                 <div class="newnote-additional-fields dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  
                   <p>What kind of note is this?</p>
                   <div class="radio">
                       <%= radio_button_tag(:note_type, "screen1") %>
@@ -227,6 +257,11 @@ a {
 
             <%= text_area_tag(:comment, nil, size: "50x4", id: "comments", placeholder: "Type to enter a new note...") %>
           </div>
+        </div>
+      </nav>
+
+      <textarea id="comments" rows="4" cols="50" placeholder="Type to enter a new note..."></textarea>
+    </div>
     <% end %>
   </div>
 </body>
