@@ -172,9 +172,9 @@ a {
                 </span>
               </div>
               <div class="note-type pull-right">
-                <%= note.note_type %> noted by
+                <%= note.note_type.to_s.humanize %> noted by
                 <span class="note-noted-by note-noted-by-1">
-                  <%= note.user.firstname %>
+                  <%= note.user.firstname.humanize %>
                 </span>
               </div>
             </div>
@@ -225,7 +225,7 @@ a {
               </div>
             </nav>
 
-            <%= text_area_tag(:comment, "Type to enter a new note...", size: "50x4", id: "comments") %>
+            <%= text_area_tag(:comment, nil, size: "50x4", id: "comments", placeholder: "Type to enter a new note...") %>
           </div>
     <% end %>
   </div>
