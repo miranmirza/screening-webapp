@@ -106,6 +106,6 @@
     <%= f.label "City" %>
     <%= f.text_field :city %></br>
     <%= f.submit "Save", class: "btn btn-success" %>
-    <%= link_to "Cancel", candidates_path, class: "btn btn-danger" %></br>
+    <%= link_to "Cancel", candidate_path(@candidate), class: "btn btn-danger" %></br>
   <% end %>
 </div>
