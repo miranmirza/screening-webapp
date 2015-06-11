@@ -1,17 +1,17 @@
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
 <style>
+
 #currNotes {
   background: #573E60;
   color: #fff;
-  height: 100%;
+  min-height: 100%;
 }
 #newNotes {
   background: #E9E4E9;
   color: #fff;
-  height: 100%;
+  min-height: 100%;
 }
 #candidateData {
   position:relative;
@@ -44,20 +44,38 @@
 }
 #comments {
   color: #573E60;
-  font-size: 24;
-  font-weight: 300;
+  font-size: 24px;
+  font-weight: 100;
   opacity: 0.7;
   border: none;
   background: transparent;
-  width: 80%;
+  width: auto;
   height: 80%;
   resize: none;
-  }:focus {
-    outline: 0;
+  padding: 0 1.5em;
+}
+#comments:focus {
+  outline: 0;
+}
+
+#newNotes .btn {
+  color: rgba(87, 62, 96, 0.7);
+  border: 1px rgba(175, 162, 178, 0.4) solid;
+}
+
+#candidateData2 {
+  padding: 0 1.5em;
 }
 
 .row {
   margin-left: 0
+}
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+  margin-left: 0;
+}
+
+#dropdownMenu1 {
+  padding-left: 20px;
 }
 
 #notesList {
@@ -93,12 +111,47 @@
 .note-type {
   text-align: right;
 }
+.white_link {
+  color: #fff;
+}
 
+.radio label {
+  padding-right: 20px;
+}
+
+
+.newnote-additional-fields {
+  padding: 1.5em;
+}
+.newnote-additional-fields p {
+  color: rgba(87, 62, 96, 0.7);
+  font-size: 18px;
+}
+#content {
+  height: 100%;
+}
 body {
   font-family: 'Source Sans Pro', sans-serif;
 }
+a {
+  color: #fff;
+}
+#candidateInfo {
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
 
 </style>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script>
+  function init() {
+    $(".row").css("height", $(window).height());
+  }
+  $(document).ready(function() {
+    init();
+  });
+  </script>
 </head>
 
 <body>
@@ -111,53 +164,110 @@ body {
             <button type="button" class="btn btn-default navbar-btn right-button border-button"><%= link_to "Edit", edit_candidate_path(@candidate), class:"white_link" %></button>
           </div>
         </nav>
+        <div id="candidateInfo">
+        <%= @candidate.firstname %>
+        <%= @candidate.lastname %>
+        from <%= @candidate.city %>
+        </br>
+        skype: <a class="white_link" href="skype:<%= @candidate.skype %>"><%= @candidate.skype %></a>
+        </br>
+        Status: <%= @candidate.status %>
+        </div>
         <div id="notesList">
-            <%= @candidate.firstname %>
-            <%= @candidate.lastname %>
-            from <%= @candidate.city %>
-            skype: <%= @candidate.skype %>
-            </br>
-            Status: <%= @candidate.status %>
-          </BR></br>
+          <% @notes.each do |note| %>
+          <div class="note">
+            <div class="note-meta clearfix">
 
-                <% @notes.each do |note| %>
-                <div class="note">
-                <div class="note-meta clearfix">
-                  <div class="note-date-taken pull-left">
-                    <span class="note-date-taken-month-day">
-                      <%= note.created_at %> 
-                    </span>
-                  </div>
-                </div>
-                <div class="note-type pull-right">
-                  <span class="note-noted-by note-noted-by-2">
-                  <%= note.note_type %> by <%= note.user.firstname %>
+              <div class="note-date-taken pull-left">
+                <span class="note-date-taken-ago">
+                  <%= note.created_at.strftime("%m/%d/%Y at %I:%M%p")  %>
                 </span>
-                </div>
-                
-                <div class="note-body">
-                  <p><%= note.comment %></p>
-                </div>
-                
-                  
-                  </br>
-                <% end %>
-
+              </div>
+              <div class="note-type pull-right">
+                <%= note.note_type.to_s.humanize %> noted by
+                <span class="note-noted-by note-noted-by-1">
+                  <%= note.user.firstname.humanize %>
+                </span>
+              </div>
+            </div>
+            <div class="note-body">
+              <p><%= note.comment %></p>
             </div>
           </div>
+          <% end %>
         </div>
     </div>
 
     <div id="newNotes" class="col-lg-6">
       <nav id="candidateData2" class="navbar navbar-default navbar-fixed-top">
-          <button type="button" class="btn btn-default navbar-btn border-button">Save this note</button>
+          <%= form_for Note.new, :url => notes_path(:candidate_id => @candidate.id) do |f| %>
+              <div class="dropdown">
+                <%= f.submit "Save Note", class: "btn btn-default navbar-btn border-button" %>
+                <div class = "radio">
+                <%= radio_button_tag(:note_type, "pending") %>
+                <%= label_tag(:type1, "Pending") %>
+                <%= radio_button_tag(:note_type, "screen1") %>
+                <%= label_tag(:type2, "Screen 1") %>
+                <%= radio_button_tag(:note_type, "screen2") %>
+                <%= label_tag(:type3, "Screen 2") %>
+                <%= radio_button_tag(:note_type, "screen3") %>
+                <%= label_tag(:type4, "Screen 3") %>
+                <%= radio_button_tag(:note_type, "in_person") %>
+                <%= label_tag(:type5, "In person") %>
+                <%= radio_button_tag(:note_type, "approved") %>
+                <%= label_tag(:type6, "Approved") %>
+                <%= radio_button_tag(:note_type, "denied") %>
+                <%= label_tag(:type7, "Denied") %>
+              </div>
+              
+                
+                <div class="newnote-additional-fields dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                  
+                  <p>What kind of note is this?</p>
+                  <div class="radio">
+                      <%= radio_button_tag(:note_type, "screen1") %>
+                      <%= label_tag(:type2, "Screen 1") %>
+                  </div>
+                  <div class="radio">
+                    <%= radio_button_tag(:note_type, "screen2") %>
+                    <%= label_tag(:type3, "Screen 2") %>
+                  </div>
+                  <div class="radio">
+                    <%= radio_button_tag(:note_type, "screen3") %>
+                    <%= label_tag(:type4, "Screen 3") %>
+                  </div>
+                  <div class="radio">
+                    <%= radio_button_tag(:note_type, "in_person") %>
+                    <%= label_tag(:type5, "In person") %>
+                  </div>
+                  <div class="radio">
+                    <%= radio_button_tag(:note_type, "approved") %>
+                    <%= label_tag(:type6, "Approved") %>
+                  </div>
+                  <div class="radio">
+                    <%= radio_button_tag(:note_type, "denied") %>
+                    <%= label_tag(:type7, "Denied") %></br>
+                  </div>
+                    <%= hidden_field_tag :user_id, @current_user.id %>
+
+                    <%= f.submit "Save this note for real", class: "btn btn-default navbar-btn border-button" %></br>
+                </div>
+              </div>
+            </nav>
+
+            <%= text_area_tag(:comment, nil, size: "50x4", id: "comments", placeholder: "Type to enter a new note...") %>
+          </div>
+        </div>
       </nav>
+
       <textarea id="comments" rows="4" cols="50" placeholder="Type to enter a new note..."></textarea>
     </div>
-
+    <% end %>
   </div>
 </body>
-
 <%= link_to "Add note", new_note_path(candidate_id: @candidate.id) %></br>
+
+
+
 
 

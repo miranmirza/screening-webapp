@@ -1,4 +1,7 @@
 <style>
+a {
+  color: #3D2347;
+}
 .exmna-nav {
   background-color: #3D2347;
 }
@@ -75,6 +78,7 @@
 .white_link {
   color: #fff;
 }
+
 </style>
 <head>
   <link href="./app/asssets/stylesheets/animations.css">
@@ -104,7 +108,7 @@
 
 <% @approved_candidates.each do |candidate| %>
 <div class="box center slideUp">
-    <div class="box-text"><%= candidate.firstname %> <%= candidate.lastname %> from <%= candidate.city %> <span id="skype">skype</span> <a id="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a>
+    <div class="box-text"><%= link_to display_candidate(candidate.firstname, candidate.lastname, candidate.city), candidate_path(candidate), class: "white_link" %> <span id="skype">skype</span> <a class="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a>
     </br>
     <%= progress(candidate.status) %>
     </div></div></div>
