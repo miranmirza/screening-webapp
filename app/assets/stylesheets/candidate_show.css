@@ -1,0 +1,165 @@
+#currNotes {
+  background: #573E60;
+  color: #fff;
+  min-height: 100%;
+}
+
+#newNotes {
+  background: #E9E4E9;
+  color: #fff;
+  min-height: 100%;
+}
+
+#candidateData {
+  position:relative;
+  border-color: #3D2347;
+  background-color: #3D2347;
+  color: #3D2347;
+}
+
+#candidateData2 {
+  position:relative;
+  border-color: transparent;
+  background-color: transparent;
+  color: #573E60;
+}
+
+.right-button {
+  position: absolute;
+  right: 10px;
+}
+
+.col-lg-6 {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.border-button {
+  background-color: transparent;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 18px;
+}
+
+.borderless {
+  border-color: transparent;
+}
+
+#comments {
+  color: #573E60;
+  font-size: 24px;
+  font-weight: 100;
+  opacity: 0.7;
+  border: none;
+  background: transparent;
+  width: auto;
+  height: 80%;
+  resize: none;
+}
+
+#comments:focus {
+  outline: 0;
+  resize: none;
+  overflow: hidden;
+}
+
+#newNotes .btn {
+  color: rgba(87, 62, 96, 0.7);
+  border: 1px rgba(175, 162, 178, 0.4) solid;
+}
+
+#candidateData2 {
+  padding: 0 1.5em;
+}
+
+.row {
+  margin-left: 0
+}
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+  margin-left: 0;
+}
+
+#dropdownMenu1 {
+  padding-left: 20px;
+}
+
+#notesList {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+.note {
+  margin-bottom: 2em;
+}
+.note-meta {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  position: relative;
+}
+.note-meta:before {
+  position: absolute;
+  border-top: 1px rgba(255,255,255,0.6) solid;
+  width: 1.8em;
+  height: 0;
+  top: 0.8em;
+  left: -2em;
+}
+.note-body {
+  margin-top: 0.5em;
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.note-body p {
+  margin: 0;
+}
+
+.note-type {
+  text-align: right;
+}
+.white_link {
+  color: #fff;
+}
+
+.radio label {
+  padding-right: 20px;
+}
+
+
+.newnote-additional-fields {
+  padding: 1.5em;
+}
+.newnote-additional-fields p {
+  color: rgba(87, 62, 96, 0.7);
+  font-size: 18px;
+}
+#content {
+  height: 100%;
+}
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+a {
+  color: #fff;
+}
+#candidateInfo {
+  padding-left: 20px;
+  padding-bottom: 10px;
+  font-size: larger;
+}
+
+.display-inline {
+  display: inline-block;
+}
+
+.radio {
+  display: inline-block;
+}
+
+input[type="radio"] {
+  margin: 18px 0;
+  padding: 20px 0;
+}
+
+textarea {
+  width: 100% !important;
+}

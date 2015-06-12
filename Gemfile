@@ -11,6 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 gem 'omniauth-facebook'
+gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3.0'
 
 group :development, :test do
   gem 'pry'
@@ -23,5 +25,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails', '~> 4.0'
 end

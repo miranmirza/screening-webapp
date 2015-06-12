@@ -8,7 +8,7 @@ module CandidateHelper
       return "screen1 & screen2 completed"
     elsif status == "screen3"
       return "screen1, screen2 & screen3 completed"
-    elsif status == "in_person"
+    elsif status == "in person"
       return "in person meeting completed"
     elsif status == "approved"
       return "approved!"

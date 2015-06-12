@@ -1,5 +1,7 @@
 require "capybara/rspec"
 require "rails_helper"
+require "factory_girl_rails"
+require "support/factory_girl"
 
 OmniAuth.config.test_mode = true
 
@@ -7,9 +9,9 @@ OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
   :provider => 'facebook',
   :uid => '123545',
   :info => {
-    :email => "bob",
-    :name => "bob",
+    :email => "bob@bob.com",
     :first_name => "bob",
+    :last_name => "last",
     :profile_image_url => "bob.com"
   },
   :credentials => {
