@@ -1,0 +1,31 @@
+<head>
+  <%= stylesheet_link_tag "animations.css" %>
+  <%= stylesheet_link_tag "screeners.css" %>
+</head>
+
+<body>
+<div>
+<nav class="navbar navbar-default navbar-static-top exmna-nav">
+  <div class="container">
+    <p class="navbar-text navbar-right"><div class="nav-text">Happy <%= Time.now.strftime('%A') %> <%= @current_user.firstname %>! <u>
+    <%= link_to "Logout", logout_path, class: "white_link" %></p></u></div>
+  </div>
+</nav>
+</div>
+
+<p><a href="/"class="right slideUp">Back to All Applicants <i class="fa fa-angle-right"></i></a></p><BR><BR>
+<% @users.each do |user| %>
+  <div class="box center slideUp">
+    <div class="box-text"><%= user.firstname %> <%= user.lastname %> <span id="skype">skype</span> <a class="white_link" href="skype:<%= user.skype %>"><%= user.skype %></a></div>
+  <div class="box-right">
+  <% if user.screener? %>
+    <%= link_to "Revoke Access", revoke_access_user_path(user), class: "btn btn-danger", method: :put %>
+  <% else %>
+    <%= link_to "Grant Access", grant_access_user_path(user), class: "btn btn-default", method: :put unless user.admin? %>
+  <% end %>
+</div>
+</div>
+  </br>
+<% end %>
+</body>
+
