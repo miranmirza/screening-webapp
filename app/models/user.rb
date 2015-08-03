@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :notes
   has_many :candidates, through: :notes
 
-  attr_accessor :firstname, :lastname, :email
+  validates_presence_of :firstname, :lastname
 
   def self.from_omniauth(auth)
     user = User.find_or_create_by(provider: auth.provider, uid: auth.uid)
@@ -11,16 +11,9 @@ class User < ActiveRecord::Base
     user.email = auth.info.email
     user.profile_image_url = auth.info.image
     user.token = auth.credentials.token
-
-    user.set_role
     user.save
 
     user
-  end
-
-  def set_role
-    new_user_email = email
-    role = "pending"
   end
 
   def screener?
