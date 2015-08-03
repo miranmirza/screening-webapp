@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :notes
   has_many :candidates, through: :notes
 
-  attr_accessor :firstname, :lastname, :email, :role
+  attr_accessor :firstname, :lastname, :email
 
   def self.from_omniauth(auth)
     user = User.find_or_create_by(provider: auth.provider, uid: auth.uid)
@@ -37,6 +37,11 @@ class User < ActiveRecord::Base
 
   def guest?
     !self.screener? && !self.admin?
+  end
+
+  def make_admin
+    self.role = "admin"
+    save
   end
 
   def revoke_screener_access
