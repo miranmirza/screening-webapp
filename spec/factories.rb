@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :user do
-    firstname "User"
-    lastname "Userlast"
-    email "user@example.com"
-    provider "Facebook"
+    firstname "Joe"
+    lastname "Remy"
+    email "joer@example.com"
+    provider "Google"
   end
 
   factory :candidate do
