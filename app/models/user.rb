@@ -1,19 +1,26 @@
 class User < ActiveRecord::Base
   has_many :notes
   has_many :candidates, through: :notes
-  validates :firstname, presence: true
-  validates :lastname, presence: true
 
-  def self.find_or_create_from_auth(auth)
+  attr_accessor :firstname, :lastname, :email, :role
+
+  def self.from_omniauth(auth)
     user = User.find_or_create_by(provider: auth.provider, uid: auth.uid)
     user.firstname = auth.info.first_name
     user.lastname = auth.info.last_name
     user.email = auth.info.email
     user.profile_image_url = auth.info.image
     user.token = auth.credentials.token
+
+    user.set_role
     user.save
 
     user
+  end
+
+  def set_role
+    new_user_email = email
+    role = "pending"
   end
 
   def screener?
@@ -32,13 +39,13 @@ class User < ActiveRecord::Base
     !self.screener? && !self.admin?
   end
 
-  def revoke!
+  def revoke_screener_access
     self.role = "pending"
-    save!
+    save
   end
 
-  def grant!
+  def grant_screener_access
     self.role = "screener"
-    save!
+    save
   end
 end
