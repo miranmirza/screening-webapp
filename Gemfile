@@ -10,7 +10,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
-gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'simple_form'
 gem 'bootstrap-sass', '~> 3.3.0'

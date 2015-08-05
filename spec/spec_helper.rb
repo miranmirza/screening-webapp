@@ -3,6 +3,21 @@ require "rails_helper"
 require "factory_girl_rails"
 require "support/factory_girl"
 
+OmniAuth.config.test_mode = true
+
+OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+  :provider => 'google_oauth2',
+  :uid => '123545',
+  :info => {
+    :email => "bob@bob.com",
+    :first_name => "bob",
+    :last_name => "last",
+    :image => "https://upload.wikimedia.org/wikipedia/commons/f/ff/JAA_3538-2.jpg"
+  },
+  :credentials => {
+    :token => "111"
+  }
+})
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
