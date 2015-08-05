@@ -1,97 +1,5 @@
-<style>
-a {
-  color: #3D2347;
-}
-.exmna-nav {
-  background-color: #3D2347;
-}
-.box {
-  width: 60%;
-  height: 30px;
-  margin-bottom: 20px;
-  padding-bottom: 60px;
-  background-color: #53395C;
-  color: #fff;
-}
-
-.box_approved {
-  width: 60%;
-  height: 30px;
-  margin-bottom: 20px;
-  padding-bottom: 60px;
-  background-color: #907E95;
-  color: #fff;
-}
-
-.box-right {
-  margin-top: 10px;
-  margin-right: 10px;
-  float: right;
-}
-
-.center {
-    margin-left: auto;
-    margin-right: auto;
-}
-.navbar-center {
-  color: #fff;
-  display: inline-block;
-  vertical-align: top;
-  float: none;
-  text-align: center;
-}
-.box-text {
-  padding-top: 15px;
-  padding-left: 15px;
-  float: left;
-}
-.btn {
-  background-color: transparent;
-  color: #fff;
-}
-.nav-text {
-  padding-top: 10px;
-  float: right;
-  color: #fff;
-}
-.navbar-center {
-  color: #fff;
-  text-align: center;
-  margin: 0px auto;
-}
-.right {
-  float: right;
-  margin-right: 10px;
-  opacity: 0.7;
-  color: #3D2347;
-  font-weight: 400;
-  font-size: 18px;
-}
-.left {
-  display: inline;
-  margin-left: 10px;
-  opacity: 0.7;
-  color: #3D2347;
-  font-weight: 400;
-  font-size: 18px;
-}
-.float-right {
-  position: relative;
-  float: right;
-}
-.justify-class {
-  margin-left: 20%;
-}
-#skype {
-  opacity: 0.7;
-}
-.white_link {
-  color: #fff;
-}
-
-</style>
 <head>
-  <link href="./app/asssets/stylesheets/animations.css">
+    <%= stylesheet_link_tag "animations.css" %>
 </head>
 
 <body> 
@@ -103,13 +11,13 @@ a {
 </nav>
 </div>
 <% if current_user.admin? %>
-<p class="left slideUp"><i class="fa fa-angle-left"></i> <%= link_to "Screeners", users_path %></p>
-<p class="right slideUp"><i class="fa fa-user-plus"></i> <%= link_to "Add candidate", new_candidate_path %></p><% end %><BR><BR>
+<p class="left slideUp"><i class="fa fa-angle-left"></i> <%= link_to "Screeners", users_path, class:"purple_link" %></p>
+<p class="right slideUp"><i class="fa fa-user-plus"></i> <%= link_to "Add candidate", new_candidate_path, class:"purple_link" %></p><% end %><BR><BR>
 </br>
 <h3 class="justify-class slideUp">Pending screening</h3>
 <% @pending_candidates.each do |candidate| %>
 
-  <div class="box center slideUp">
+  <div class="box index_box center slideUp">
     <div class="box-text"><%= link_to display_candidate(candidate.firstname, candidate.lastname, candidate.city), candidate_path(candidate), class: "white_link" %> <span id="skype">skype</span> <a class="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a>
   </br>
   <%= progress(candidate.status).to_s.humanize %></div></div>
