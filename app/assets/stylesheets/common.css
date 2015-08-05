@@ -9,6 +9,12 @@
 
   color: #fff;
 }
+
+.box_approved {			
+  padding-bottom: 60px;		
+  background-color: #907E95;
+}
+
 .box-right {
   margin-top: 10px;
   margin-right: 10px;

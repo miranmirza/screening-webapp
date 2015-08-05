@@ -18,7 +18,7 @@
 <% @pending_candidates.each do |candidate| %>
 
   <div class="box index_box center slideUp">
-    <div class="box-text"><%= link_to display_candidate(candidate.firstname, candidate.lastname, candidate.city), candidate_path(candidate), class: "white_link" %> <span id="skype">skype</span> <a class="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a>
+    <div class="box-text"><%= link_to display_candidate(candidate.firstname, candidate.lastname, candidate.city), candidate_path(candidate), class: "white_link" %> <spacn id="skype">skype</span> <a class="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a>
   </br>
   <%= progress(candidate.status).to_s.humanize %></div></div>
 <% end %>
@@ -26,7 +26,7 @@
 <h3 class="justify-class slideUp">Completed screening</h1>
 
 <% @approved_candidates.each do |candidate| %>
-<div class="box_approved center slideUp">
+<div class="box box_approved center slideUp">
     <div class="box-text"><%= link_to display_candidate(candidate.firstname, candidate.lastname, candidate.city), candidate_path(candidate), class: "white_link" %> <span id="skype">skype</span> <a class="white_link" href="skype:<%= candidate.skype %>"><%= candidate.skype %></a>
     </br>
     <%= progress(candidate.status).to_s.humanize %>
