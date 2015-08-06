@@ -1,31 +1,9 @@
-<style>
-#social_icons {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.social {
-  padding: 20px;
-}
-
-#thanks_text {
-  font-size: medium;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-</style>
-
 <body>
 <div id="social_icons">
-<a href="https://facebook.com/exmna"><img class="social" src="<%= asset_path( 'facebook.png' ) %>" /></a>
-<a href="https://twitter.com/exmuslimsofna"><img class="social" src="<%= asset_path( 'twitter.png' ) %>" /></a>
-<a href="https://plus.google.com/+exmna"><img class="social" src="<%= asset_path('googleplus.png') %>" /></a>
-<a href="mailto:community@exmna.org"><img class="social" src="<%= asset_path( 'email.png' ) %>" /></a>
+  <%= link_to image_tag( 'facebook.png' ), "https://facebook.com/exmna", class: "social" %>
+  <%= link_to image_tag( 'twitter.png' ), "https://twitter.com/exmuslimsofna", class: "social" %>
+  <%= link_to image_tag( 'googleplus.png' ), "https://plus.google.com/+exmna", class: "social" %>
+  <%= link_to image_tag( 'email.png' ), "mailto:community@exmna.org", class: "social" %>
 </div>
 
 

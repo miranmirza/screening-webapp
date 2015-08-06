@@ -10,13 +10,13 @@ class UsersController < ApplicationController
 
   def revoke_access
     user = User.find(params[:id])
-    user.revoke!
+    user.revoke_screener_access
     redirect_to users_path
   end
 
   def grant_access
     user = User.find(params[:id])
-    user.grant!
+    user.grant_screener_access
     redirect_to users_path
   end
 
